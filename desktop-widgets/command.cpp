@@ -150,4 +150,14 @@ void editVisibility(const QVector<dive *> dives, int newValue, int oldValue)
 	execute(new EditVisibility(dives, newValue, oldValue));
 }
 
+void editAirTemp(const QVector<dive *> dives, int newValue, int oldValue)
+{
+	execute(new EditAirTemp(dives, newValue, oldValue));
+}
+
+void editWaterTemp(const QVector<dive *> dives, int newValue, int oldValue)
+{
+	execute(new EditWaterTemp(dives, newValue, oldValue));
+}
+
 } // namespace Command
