@@ -880,6 +880,7 @@ static void save_divesites(git_repository *repo, struct dir *tree)
 	free_buffer(&dirname);
 
 	purge_empty_dive_sites(&dive_site_table);
+	serialize_dive_site_uuids(&dive_site_table);
 	for (int i = 0; i < dive_site_table.nr; i++) {
 		struct membuffer b = { 0 };
 		struct dive_site *ds = get_dive_site(i, &dive_site_table);

@@ -417,14 +417,11 @@ void purge_empty_dive_sites(struct dive_site_table *table)
 	}
 }
 
-static int compare_sites(const void *_a, const void *_b)
+/* Assign arbitrary UUIDs to dive sites. This is called by before writing the dive log to XML or git. */
+void serialize_dive_site_uuids(struct dive_site_table *table)
 {
-	const struct dive_site *a = (const struct dive_site *)*(void **)_a;
-	const struct dive_site *b = (const struct dive_site *)*(void **)_b;
-	return a->uuid > b->uuid ? 1 : a->uuid == b->uuid ? 0 : -1;
-}
-
-void dive_site_table_sort(struct dive_site_table *table)
-{
-	qsort(table->dive_sites, table->nr, sizeof(struct dive_site *), compare_sites);
+	int i;
+	struct dive_site *d;
+	for_each_dive_site(i, d, table)
+		d->uuid = i;
 }

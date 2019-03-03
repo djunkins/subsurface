@@ -169,7 +169,6 @@ bool DivelogsDeWebServices::prepare_dives_for_divelogs(const QString &tempfile, 
 		return false;
 	}
 
-
 	int error_code;
 	zip = zip_open(QFile::encodeName(QDir::toNativeSeparators(tempfile)), ZIP_CREATE, &error_code);
 	if (!zip) {
@@ -178,6 +177,8 @@ bool DivelogsDeWebServices::prepare_dives_for_divelogs(const QString &tempfile, 
 		report_error(tr("Failed to create zip file for upload: %s").toUtf8(), buffer);
 		return false;
 	}
+
+	serialize_dive_site_uuids(&dive_site_table);
 
 	/* walk the dive list in chronological order */
 	int i;
