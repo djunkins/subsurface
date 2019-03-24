@@ -45,11 +45,13 @@ private:
 	bool filterAcceptsRow(int sourceRow, const QModelIndex &source_parent) const override;
 	bool lessThan(const QModelIndex &i1, const QModelIndex &i2) const override;
 	bool setData(const QModelIndex &index, const QVariant &value, int role) override;
+	QString fullText;
 public slots:
 	void remove(const QModelIndex &index);
 public:
 	DiveSiteSortedModel();
 	QStringList allSiteNames() const;
+	void setFilter(const QString &text);
 };
 
 // To access only divesites at the given GPS coordinates with the exception of a given dive site
