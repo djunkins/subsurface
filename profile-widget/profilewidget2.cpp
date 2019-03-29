@@ -1689,7 +1689,7 @@ void ProfileWidget2::splitDive()
 	duration_t time;
 	time.seconds = lrint(timeAxis->valueAt(scenePos));
 	Command::splitDives(d, time);
-	emit updateDiveInfo(false);
+	emit updateDiveInfo();
 #endif
 }
 
@@ -1735,7 +1735,7 @@ void ProfileWidget2::changeGas()
 
 	// FIXME - this no longer gets written to the dive list - so we need to enableEdition() here
 
-	emit updateDiveInfo(false);
+	emit updateDiveInfo();
 	mark_divelist_changed(true);
 	replot();
 }
