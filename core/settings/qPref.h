@@ -6,25 +6,14 @@
 #include <QObject>
 #include <QQmlEngine>
 
-class qPref : public QObject {
-	Q_OBJECT
-	Q_PROPERTY(QString canonical_version READ canonical_version);
-	Q_PROPERTY(QString mobile_version READ mobile_version);
-
+class qPref {
 public:
-	qPref(QObject *parent = NULL);
-	static qPref *instance();
-
 	// Load/Sync local settings (disk) and struct preference
 	static void load() { loadSync(false); }
 	static void sync() { loadSync(true); }
 
 	// Register QML
-	void registerQML(QQmlEngine *engine);
-
-public:
-	static const QString canonical_version();
-	static const QString mobile_version();
+	static void registerQML(QQmlEngine *engine);
 
 private:
 	static void loadSync(bool doSync);

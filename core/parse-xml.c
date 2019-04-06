@@ -2217,6 +2217,7 @@ static struct xslt_files {
 	  { "manualcsv", "manualcsv2xml.xslt", NULL },
 	  { "logbook", "DiveLog.xslt", NULL },
 	  { "AV1", "av1.xslt", NULL },
+	  { "exportTrak", "Mares.xslt", NULL },
 	  { NULL, }
   };
 

@@ -69,6 +69,11 @@ void splitDives(dive *d, duration_t time)
 	execute(new SplitDives(d, time));
 }
 
+void splitDiveComputer(dive *d, int dc_num)
+{
+	execute(new SplitDiveComputer(d, dc_num));
+}
+
 void mergeDives(const QVector <dive *> &dives)
 {
 	execute(new MergeDives(dives));

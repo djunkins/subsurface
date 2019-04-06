@@ -14,30 +14,9 @@
 #include "qPrefTechnicalDetails.h"
 #include "qPrefUnit.h"
 #include "qPrefUpdateManager.h"
-#include "ssrf-version.h"
 
 #include <QtQml>
 #include <QQmlContext>
-
-qPref::qPref(QObject *parent) : QObject(parent)
-{
-}
-
-qPref *qPref::instance()
-{
-	static qPref *self = new qPref;
-	return self;
-}
-
-const QString qPref::canonical_version()
-{
-	return QString(CANONICAL_VERSION_STRING);
-}
-
-const QString qPref::mobile_version()
-{
-	return QString(MOBILE_VERSION_STRING);
-}
 
 void qPref::loadSync(bool doSync)
 {
@@ -69,7 +48,6 @@ void qPref::registerQML(QQmlEngine *engine)
 	if (engine) {
 		QQmlContext *ct = engine->rootContext();
 
-		ct->setContextProperty("Pref", qPref::instance());
 		ct->setContextProperty("PrefCloudStorage", qPrefCloudStorage::instance());
 		ct->setContextProperty("PrefDisplay", qPrefDisplay::instance());
 		ct->setContextProperty("PrefDiveComputer", qPrefDiveComputer::instance());

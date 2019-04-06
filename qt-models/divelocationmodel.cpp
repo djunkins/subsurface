@@ -237,6 +237,7 @@ struct dive_site *DiveSiteSortedModel::getDiveSite(const QModelIndex &idx)
 	return get_dive_site(mapToSource(idx).row(), &dive_site_table);
 }
 
+#ifndef SUBSURFACE_MOBILE
 bool DiveSiteSortedModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
 	struct dive_site *ds = getDiveSite(index);
@@ -254,7 +255,6 @@ bool DiveSiteSortedModel::setData(const QModelIndex &index, const QVariant &valu
 	}
 }
 
-#ifndef SUBSURFACE_MOBILE
 // TODO: Remove or edit. It doesn't make sense to call the model here, which calls the undo command,
 // which in turn calls the model.
 void DiveSiteSortedModel::remove(const QModelIndex &index)
@@ -276,7 +276,8 @@ void DiveSiteSortedModel::remove(const QModelIndex &index)
 		break;
 	}
 }
-#endif
+
+#endif // SUBSURFACE_MOBILE
 
 void DiveSiteSortedModel::setFilter(const QString &text)
 {
