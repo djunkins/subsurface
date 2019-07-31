@@ -1025,7 +1025,9 @@ void MainWindow::on_actionYearlyStatistics_triggered()
 
 void MainWindow::on_actionStatsCharts_triggered()
 {
-#ifndef NO_CHARTS
+#ifdef NO_CHARTS
+    // Qt5Charts not installed
+#else
 	statsChartWidget = new ChartWidget();
 	statsChartWidget->show();
 #endif
