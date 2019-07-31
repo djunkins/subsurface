@@ -219,7 +219,7 @@ MainWindow::MainWindow() : QMainWindow(),
 #endif
 
 #ifdef NO_CHARTS
-	ui.menuFile->removeAction(ui.actionStatsChart);
+	ui.menuView->removeAction(ui.actionStatsCharts);
 #endif
 
 	enableDisableCloudActions();
@@ -1025,9 +1025,8 @@ void MainWindow::on_actionYearlyStatistics_triggered()
 
 void MainWindow::on_actionStatsCharts_triggered()
 {
-#ifdef NO_CHARTS
-    // Qt5Charts not installed
-#else
+// Check if charts are being included
+#ifndef NO_CHARTS
 	statsChartWidget = new ChartWidget();
 	statsChartWidget->show();
 #endif

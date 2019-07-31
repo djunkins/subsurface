@@ -222,7 +222,9 @@ private:
 	UpdateManager *updateManager;
 	LocationInformationWidget *diveSiteEdit;
 
+#ifndef NO_CHARTS
 	ChartWidget *statsChartWidget;
+#endif
 
 	bool plannerStateClean();
 	void setupForAddAndPlan(const char *model);

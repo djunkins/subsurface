@@ -37,6 +37,7 @@ option(LIBGIT2_DYNAMIC "search for libgit2.so before libgit2.a" OFF)
 option(NO_DOCS "disable the docs" OFF)
 option(NO_PRINTING "disable the printing support" OFF)
 option(NO_USERMANUAL "don't include a viewer for the user manual" OFF)
+option(NO_CHARTS "disable that statistics charts for older Qt versions" OFF)
 
 #Options regarding enabling parts of subsurface
 option(BTSUPPORT "enable support for QtBluetooth (requires Qt5.4 or newer)" ON)
@@ -174,7 +175,6 @@ elseif (SUBSURFACE_TARGET_EXECUTABLE MATCHES "MobileExecutable")
 	add_definitions(-DSUBSURFACE_MOBILE)
 	message(STATUS "Building Subsurface-mobile requires BT support")
 	set(BTSUPPORT ON)
-	set(NO_CHARTS ON)
 endif()
 
 if(ANDROID)
@@ -264,6 +264,10 @@ endif()
 
 if(BLESUPPORT)
 	add_definitions(-DBLE_SUPPORT)
+endif()
+
+if(NO_CHARTS)
+	add_definitions(-DNO_CHARTS)
 endif()
 
 #set up the subsurface_link_libraries variable
@@ -544,4 +548,4 @@ if (MAKE_TESTS)
 endif()
 
 # useful for debugging CMake issues
-# print_all_variables()
+#print_all_variables()
