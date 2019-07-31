@@ -217,6 +217,11 @@ MainWindow::MainWindow() : QMainWindow(),
 	plannerDetails->printPlan()->hide();
 	ui.menuFile->removeAction(ui.actionPrint);
 #endif
+
+#ifdef NO_CHARTS
+	ui.menuFile->removeAction(ui.actionStatsChart);
+#endif
+
 	enableDisableCloudActions();
 
 	ui.mainErrorMessage->hide();
@@ -1016,6 +1021,14 @@ void MainWindow::on_actionYearlyStatistics_triggered()
 	d.setWindowTitle(tr("Yearly statistics"));
 	d.setWindowIcon(QIcon(":subsurface-icon"));
 	d.exec();
+}
+
+void MainWindow::on_actionStatsCharts_triggered()
+{
+#ifndef NO_CHARTS
+	statsChartWidget = new ChartWidget();
+	statsChartWidget->show();
+#endif
 }
 
 void MainWindow::toggleCollapsible(bool toggle)
